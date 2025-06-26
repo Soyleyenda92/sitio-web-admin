@@ -322,21 +322,24 @@ footer {
   line-height: 1.4;
 }
 
-  #chatbot-icon {
+#chatbot-icon {
     position: fixed;
     bottom: 25px;
     right: 25px;
     background-color: #2e7d32;
     color: white;
     border: none;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    font-size: 24px;
+    border-radius: 30px; /* Más redondeado pero rectangular */
+    padding: 10px 20px;
+    font-size: 16px;
     cursor: pointer;
     z-index: 999;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
+
 
   #chatbot-window {
     position: fixed;
@@ -361,11 +364,16 @@ footer {
   }
 
   #chatbot-messages {
-    flex: 1;
-    padding: 10px;
-    overflow-y: auto;
-    font-size: 0.9rem;
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
   }
+
+
 
   #chatbot-input {
     display: flex;
@@ -396,5 +404,72 @@ footer {
     text-align: left;
     margin: 5px 0;
   }
-</style>
 
+  .user-msg, .bot-msg {
+  display: inline-block;
+  max-width: 85%;
+  padding: 10px 14px;
+  border-radius: 20px;
+  margin: 8px 0;
+  line-height: 1.4;
+  word-wrap: break-word;
+  font-size: 0.95rem;
+  clear: both;
+}
+
+/* Mensaje del usuario (cliente) */
+.user-msg {
+  background-color: #dcf8c6; /* verde tipo WhatsApp */
+  align-self: flex-end;
+  float: right;
+  border-bottom-right-radius: 0;
+  text-align: left;
+}
+
+/* Mensaje del bot */
+.bot-msg {
+  background-color: #f1f0f0;
+  float: left;
+  align-self: flex-start;
+  border-bottom-left-radius: 0;
+  text-align: left;
+}
+
+.typing {
+  display: inline-block;
+  font-weight: bold;
+  padding: 8px 12px;
+  background: #f0f0f0;
+  color: #555;
+  border-radius: 15px;
+  max-width: 70%;
+  width: fit-content;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.typing span {
+  display: inline-block;
+  animation: blink 1s infinite;
+}
+
+.typing span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes blink {
+  0%, 20% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+</style>
