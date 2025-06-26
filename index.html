@@ -148,24 +148,16 @@
   <h2>Testimonios</h2>
   <div class="testimonials-container">
     <div class="testimonial active">
-      “” – .
+      “Comprometidos con la administración eficiente y transparente de tu comunidad.”
     </div>
     <div class="testimonial">
-      
-    </div>
-    <div class="testimonial">
-      
-    </div>
-    <div class="testimonial">
-      
-    </div>
-    <div class="testimonial">
-      
+      “Pronto podrás leer las experiencias de nuestros primeros clientes satisfechos.”
     </div>
     <!-- Puedes agregar más testimonios aquí -->
   </div>
-</section>
+  <p>¿Ya trabajaste con nosotros? <a href="#contacto">Déjanos tu testimonio aquí</a>.</p>
 
+</section>
 
 <section id="contacto" class="contact">
     <h2>Contáctanos</h2>
@@ -188,7 +180,7 @@
 
 
 <div id="chatbot-icon" onclick="toggleChatbot()">
-  💬
+  🤖💬
 </div>
 
 <div id="chatbot-window">
@@ -322,6 +314,8 @@ function toggleChatbot() {
     const input = document.getElementById("chatbot-user-input");
     const messages = document.getElementById("chatbot-messages");
     const text = input.value.trim();
+    detectarDatosCliente(text);  // << Captura datos personales
+
 
     if (!text) return;
 
@@ -344,94 +338,150 @@ function toggleChatbot() {
     }, 600);
   }
 
+  // Permitir enviar con Enter (y Shift+Enter para salto de línea si usas textarea en el futuro)
+document.getElementById("chatbot-user-input").addEventListener("keydown", function (event) {
+  if (event.key === "Enter" && !event.shiftKey) {
+    event.preventDefault();
+    sendChatMessage();
+  }
+  });
+
+  let datosCliente = {
+  nombre: null,
+  email: null,
+  edificio: null
+  };
+
+  function detectarDatosCliente(texto) {
+  const lower = texto.toLowerCase();
+
+    // Detectar nombre
+    const nombreMatch = texto.match(/(me llamo|mi nombre es)\s+([a-záéíóúñ\s]{3,})/i);
+    if (nombreMatch) {
+      datosCliente.nombre = nombreMatch[2].trim();
+    }
+
+    // Detectar correo
+    const emailMatch = texto.match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/i);
+    if (emailMatch) {
+      datosCliente.email = emailMatch[0];
+    }
+
+    // Detectar nombre de edificio
+    const edificioMatch = texto.match(/(edificio|condominio)\s+([a-z0-9áéíóúñ\s]{2,})/i);
+    if (edificioMatch) {
+      datosCliente.edificio = edificioMatch[2].trim();
+    }
+  }
+
+
   function generarRespuesta(text) {
-  const t = text.toLowerCase();
+    const t = text.toLowerCase();
+    const comentarioEmpatico = [
+      "Gracias por comentarlo.",
+      "Entiendo lo importante que es este tema.",
+      "Lamentamos la situación, y queremos ayudarte.",
+      "Gracias por tu confianza.",
+      "Valoramos que nos lo informes.",
+      "Vamos a tomar nota y ayudarte con gusto."
+    ];
 
-  // Respuestas empáticas aleatorias
-  const comentariosHumanos = [
-    "Lamento que estés pasando por eso.",
-    "Entiendo lo complicado que puede ser esta situación.",
-    "Gracias por contarnos, vamos a ayudarte lo antes posible.",
-    "¡Vaya! Eso suena urgente. Vamos a revisarlo.",
-    "Gracias por tu mensaje. Estoy aquí para ayudarte.",
-    "Vamos a canalizar esto de inmediato.",
-    "Gracias por confiar en nosotros para resolver esto.",
-    "Lo importante es atenderlo rápido. Te ayudo con gusto."
-  ];
+    function responderBase(mensajeTema) {
+      const empatia = comentarioEmpatico[Math.floor(Math.random() * comentarioEmpatico.length)];
+      const cierre = "\n\n📌 Para ayudarte mejor, por favor indícanos tu *nombre completo*, *edificio o condominio* y *correo electrónico*. Uno de nuestros asesores se pondrá en contacto contigo pronto.";
+      return `${empatia} ${mensajeTema}${cierre}`;
+    }
 
-  function responderConEmpatia(mensajePrincipal) {
-    const comentario = comentariosHumanos[Math.floor(Math.random() * comentariosHumanos.length)];
-    return `${comentario} ${mensajePrincipal}`;
+    // Casos temáticos
+    if (t.includes("inundación") || t.includes("agua") || t.includes("filtración") || t.includes("cañería")) {
+      return responderBase("Los problemas de agua o filtraciones deben ser atendidos con urgencia por mantenimiento.");
+    }
+
+    if (t.includes("fuego") || t.includes("incendio") || t.includes("alarma")) {
+      return responderBase("Ante casos de incendio, es clave contar con protocolos activos y buena coordinación.");
+    }
+
+    if (t.includes("ascensor") || t.includes("elevador") || t.includes("parado")) {
+      return responderBase("Las fallas en ascensores deben ser revisadas por técnicos certificados lo antes posible.");
+    }
+
+    if (t.includes("electricidad") || t.includes("luz") || t.includes("corte")) {
+      return responderBase("Los cortes eléctricos pueden requerir revisión del sistema común o del proveedor externo.");
+    }
+
+    if (t.includes("basura") || t.includes("limpieza") || t.includes("residuos")) {
+      return responderBase("La limpieza y manejo de residuos deben seguir rutinas establecidas para áreas comunes.");
+    }
+
+    if (t.includes("portón") || t.includes("portero") || t.includes("conserje") || t.includes("acceso")) {
+      return responderBase("Los problemas de acceso deben tratarse de inmediato para garantizar la seguridad.");
+    }
+
+    if (t.includes("ruido") || t.includes("vecino") || t.includes("molestia") || t.includes("discusión")) {
+      return responderBase("La convivencia armónica es parte esencial de una comunidad organizada.");
+    }
+
+    if (t.includes("mascota") || t.includes("perro") || t.includes("animal")) {
+      return responderBase("Las mascotas deben respetar las normas internas del reglamento de copropiedad.");
+    }
+
+    if (t.includes("piscina") || t.includes("gimnasio") || t.includes("área común")) {
+      return responderBase("El uso de espacios comunes debe seguir las normas acordadas por el comité.");
+    }
+
+    if (t.includes("comité") || t.includes("reunión") || t.includes("asamblea")) {
+      return responderBase("Las reuniones de comité y asambleas deben regirse por plazos y quorum según la ley.");
+    }
+
+    if (t.includes("libro de actas") || t.includes("acta") || t.includes("registro")) {
+      return responderBase("La Ley 21.442 exige actas digitales o físicas firmadas para validar acuerdos.");
+    }
+
+    if (t.includes("cuentas") || t.includes("transparencia") || t.includes("gastos") || t.includes("presupuesto")) {
+      return responderBase("Toda comunidad debe recibir informes mensuales con respaldo de ingresos y egresos.");
+    }
+
+    if (t.includes("deuda") || t.includes("moroso") || t.includes("pago atrasado") || t.includes("cobro judicial")) {
+      return responderBase("Los cobros de gastos comunes tienen respaldo legal, pero deben tratarse con criterios justos.");
+    }
+
+    if (t.includes("reglamento") || t.includes("ley 21442") || t.includes("ley de copropiedad")) {
+      return responderBase("La Ley 21.442 regula la vida en comunidades. Estamos actualizados con sus últimas modificaciones.");
+    }
+
+    if (t.includes("cambio de administrador") || t.includes("despido") || t.includes("renuncia")) {
+      return responderBase("El cambio de administrador debe hacerse con respaldo de acta y entrega de documentación.");
+    }
+
+    if (t.includes("seguro") || t.includes("incendio") || t.includes("responsabilidad civil")) {
+      return responderBase("Todo condominio debe contar con seguros obligatorios según la ley.");
+    }
+
+    if (t.includes("servicio") || t.includes("qué hacen") || t.includes("administran")) {
+      return responderBase("Nos especializamos en la administración profesional de edificios, según estándares y ley vigente.");
+    }
+
+    if (t.includes("precio") || t.includes("cotización") || t.includes("valor") || t.includes("cobran")) {
+      return responderBase("El costo depende de tamaño, servicios requeridos y ubicación. Te podemos enviar una cotización sin compromiso.");
+    }
+
+    if (t.includes("ayuda") || t.includes("asesoría") || t.includes("consulta")) {
+      return responderBase("Estamos disponibles para ayudarte con asesoría administrativa, legal y operativa.");
+    }
+
+    if (t.includes("contacto") || t.includes("teléfono") || t.includes("correo")) {
+      return responderBase("Podemos enviarte más información si nos dejas tus datos.");
+    }
+
+    if (t.includes("urgente") || t.includes("emergencia")) {
+      return responderBase("En casos de emergencia, también puedes contactar al administrador o conserje directamente.");
+    }
+
+    return responderBase("Podemos ayudarte con este tema. Cuéntanos más si lo deseas.");
   }
 
-  // Emergencias comunes
-  if (t.includes("inundación") || t.includes("agua") || t.includes("filtración")) {
-    return responderConEmpatia("Por filtraciones o inundaciones, contacta al administrador o al conserje. También puedes usar el formulario de contacto para dejar el registro.");
-  }
-
-  if (t.includes("incendio") || t.includes("fuego")) {
-    return responderConEmpatia("En caso de incendio, llama al 132 (Bomberos) de inmediato. Luego, avisa al conserje o administrador para coordinar la respuesta.");
-  }
-
-  if (t.includes("accidente") || t.includes("caída") || t.includes("persona herida")) {
-    return responderConEmpatia("Ante un accidente, es importante llamar al 131 (ambulancias) y notificar al personal de la comunidad. El administrador también debe saberlo.");
-  }
-
-  if (t.includes("corte de luz") || t.includes("sin luz") || t.includes("electricidad")) {
-    return responderConEmpatia("Te sugiero revisar si es un corte general. Si es así, contacta al administrador o la empresa de electricidad según corresponda.");
-  }
-
-  if (t.includes("ascensor") || t.includes("elevador")) {
-    return responderConEmpatia("No uses el ascensor si presenta fallas. Informa de inmediato al conserje o administrador para que llamen al técnico certificado.");
-  }
-
-  if (t.includes("seguridad") || t.includes("cámara") || t.includes("robo")) {
-    return responderConEmpatia("Ante cualquier hecho de seguridad, notifícalo al administrador y, si corresponde, a Carabineros. Si hay cámaras, pueden revisarse.");
-  }
-
-  if (t.includes("ruido") || t.includes("molesto") || t.includes("vecino")) {
-    return responderConEmpatia("Lo ideal es registrar el problema y comunicarlo al comité o administrador. Podemos ayudarte a mediar.");
-  }
-
-  // Servicios ofrecidos
-  if (t.includes("servicio") || t.includes("ofrecen") || t.includes("qué hacen")) {
-    return responderConEmpatia("Nos especializamos en administración de edificios y condominios. Ofrecemos gestión financiera, mantenimiento, coordinación de asambleas y cumplimiento legal.");
-  }
-
-  // Precios
-  if (t.includes("precio") || t.includes("valor") || t.includes("cuánto cobran") || t.includes("cotización")) {
-    return responderConEmpatia("El costo depende de factores como número de unidades, áreas comunes, ubicación, etc. Podemos enviarte una cotización sin compromiso.");
-  }
-
-  // Asesoría
-  if (t.includes("asesoría") || t.includes("ayuda") || t.includes("consulta")) {
-    return responderConEmpatia("Con gusto te asesoramos. Puedes dejar tu mensaje aquí o completar el formulario en la sección de contacto.");
-  }
-
-  // Normativa legal
-  if (t.includes("ley") || t.includes("21.442") || t.includes("normativa") || t.includes("reglamento")) {
-    return responderConEmpatia("Sí, trabajamos bajo la Ley 21.442. Podemos ayudarte con interpretaciones legales, reglamentos internos y deberes del comité.");
-  }
-
-  // Contacto
-  if (t.includes("contacto") || t.includes("correo") || t.includes("teléfono")) {
-    return responderConEmpatia("Puedes escribirnos desde la sección 'Contáctanos' o llenar el formulario para que te respondamos pronto.");
-  }
-
-  // Horarios
-  if (t.includes("horario") || t.includes("atención") || t.includes("disponibilidad")) {
-    return responderConEmpatia("Atendemos de lunes a viernes, de 9:00 a 18:00. Puedes dejar tu mensaje en cualquier momento y te responderemos.");
-  }
-
-  // Emergencia general
-  if (t.includes("emergencia") || t.includes("urgente")) {
-    return responderConEmpatia("En casos de emergencia, por favor contacta directamente al administrador o conserje. Y si es una situación crítica, llama a Bomberos (132), Ambulancias (131) o Carabineros (133).");
-  }
-
-  // Mensaje por defecto
-  return responderConEmpatia("¿Podrías darme un poco más de información para ayudarte mejor?");
-  }
 </script>
+
 
 </body>
 </html>
