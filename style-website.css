@@ -330,7 +330,7 @@ footer {
     color: white;
     border: none;
     border-radius: 30px; /* Más redondeado pero rectangular */
-    padding: 10px 20px;
+    padding: 10px 25px;
     font-size: 16px;
     cursor: pointer;
     z-index: 999;
