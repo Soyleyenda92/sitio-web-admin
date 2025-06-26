@@ -7,6 +7,21 @@ body {
     background-color: #f7f7f7;
 }
 
+.home-button {
+    color: white;           /* blanco */
+    text-decoration: none;  /* sin subrayado */
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1.2rem;      /* tamaño similar al original */
+    user-select: none;      /* evitar selección accidental */
+}
+
+.home-button:hover {
+    color: #a5d6a7; /* mismo verde claro que usas en el menú */
+    text-decoration: none;
+}
+
+
 /* Encabezado */
 header {
     position: fixed;
