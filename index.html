@@ -8,16 +8,7 @@
     <link rel="stylesheet" href="style-website.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y25C5F8K4G"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-Y25C5F8K4G');
-</script>
-
+    
 </head>
 
 
@@ -75,7 +66,7 @@
         Todo comenzó a partir de una serie de experiencias insatisfactorias en la administración de comunidades: escasez de profesionalismo, falta de claridad en los procesos y una gestión financiera poco transparente. Como copropietario y miembro activo de comités de administración, viví de cerca los problemas que afectan el bienestar de los residentes y la convivencia en los edificios.
     </p>
     <p>
-        Esa realidad me motivó a actuar. Gracias a mi formación profesional de Ingeniero Comercial y a los estudios especializados en gestión general y administración de edificios y condominios en la Pontificia Universidad Católica de Chile, decidí crear un servicio diferente: profesional, eficiente y verdaderamente comprometido con las personas.
+        Esa realidad me motivó a actuar. Gracias a mi formación profesional y a los estudios especializados en gestión general y administración de edificios y condominios en la Pontificia Universidad Católica de Chile, decidí crear un servicio diferente: profesional, eficiente y verdaderamente comprometido con las personas.
     </p>
     <p>
         Así nació este proyecto: con la misión de elevar el estándar en la administración de comunidades, ofreciendo una experiencia basada en la calidad, la transparencia y el respeto. No solo buscamos mejorar la vida diaria de los copropietarios y residentes, sino también dignificar el trabajo y el ambiente laboral de los colaboradores que forman parte de cada comunidad.
@@ -506,7 +497,30 @@ document.getElementById("chatbot-user-input").addEventListener("keydown", functi
     return responderBase("Podemos ayudarte con este tema. Cuéntanos más si lo deseas.");
   }
 
+    const chatbotIcon = document.getElementById('chatbot-icon');
+    const chatbotWindow = document.getElementById('chatbot-window');
+    const whatsappButton = document.getElementById('whatsapp-button');
+
+    chatbotIcon.addEventListener('click', () => {
+    const isVisible = chatbotWindow.style.display === 'flex';
+
+    // Mostrar/ocultar chatbot
+    chatbotWindow.style.display = isVisible ? 'none' : 'flex';
+
+    // Mover botón de WhatsApp si el chatbot está abierto
+    if (!isVisible) {
+      whatsappButton.classList.add('move-up');
+    } else {
+      whatsappButton.classList.remove('move-up');
+    }
+  });
+
 </script>
+
+<!-- Botón flotante WhatsApp -->
+<a href="https://wa.me/56951779204" target="_blank" rel="noopener" id="whatsapp-button" aria-label="Contactar por WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
 
 
 </body>
