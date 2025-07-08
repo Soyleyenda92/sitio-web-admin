@@ -493,4 +493,30 @@ footer {
 }
 
 
-</style>
+#whatsapp-button {
+  position: fixed;
+  bottom: 100px; /* Justo encima del chatbot */
+  right: 25px;
+  background-color: #25D366;
+  color: white;
+  font-size: 1.6rem;
+  border-radius: 50%;
+  padding: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  z-index: 998; /* debajo del chatbot, pero encima del contenido */
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+#whatsapp-button:hover {
+  background-color: #128C4A;
+  color: white;
+}
+
+/* Cuando se abre el chatbot, el botón sube un poco más */
+#whatsapp-button.move-up {
+  bottom: 460px; /* se ajusta para no superponer el chatbot abierto */
+}
