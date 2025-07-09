@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MC IngeAdm - Administración de Edificios y Condominios</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style-website.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MC IngeAdm - Administración de Edificios y Condominios</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style-website.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 
@@ -196,7 +194,7 @@
 </footer>
 
 
-<div id="chatbot-icon" onclick="toggleChatbot()">
+<div id="chatbot-icon">
   🤖💬
 </div>
 
@@ -497,23 +495,24 @@ document.getElementById("chatbot-user-input").addEventListener("keydown", functi
     return responderBase("Podemos ayudarte con este tema. Cuéntanos más si lo deseas.");
   }
 
+  document.addEventListener("DOMContentLoaded", () => {
     const chatbotIcon = document.getElementById('chatbot-icon');
     const chatbotWindow = document.getElementById('chatbot-window');
     const whatsappButton = document.getElementById('whatsapp-button');
 
     chatbotIcon.addEventListener('click', () => {
-    const isVisible = chatbotWindow.style.display === 'flex';
+      const isVisible = chatbotWindow.style.display === 'flex';
 
-    // Mostrar/ocultar chatbot
-    chatbotWindow.style.display = isVisible ? 'none' : 'flex';
+      chatbotWindow.style.display = isVisible ? 'none' : 'flex';
 
-    // Mover botón de WhatsApp si el chatbot está abierto
-    if (!isVisible) {
-      whatsappButton.classList.add('move-up');
-    } else {
-      whatsappButton.classList.remove('move-up');
-    }
+      if (!isVisible) {
+        whatsappButton.classList.add('move-up');
+      } else {
+        whatsappButton.classList.remove('move-up');
+      }
+    });
   });
+
 
 </script>
 
@@ -521,7 +520,5 @@ document.getElementById("chatbot-user-input").addEventListener("keydown", functi
 <a href="https://wa.me/56951779204" target="_blank" rel="noopener" id="whatsapp-button" aria-label="Contactar por WhatsApp">
   <i class="fab fa-whatsapp"></i>
 </a>
-
-
 </body>
 </html>
