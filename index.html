@@ -195,7 +195,42 @@
 <footer>
   <p>&copy; 2025 MC IngeAdm. Todos los derechos reservados.</p>
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Flag_of_Chile.svg/32px-Flag_of_Chile.svg.png" alt="Bandera Chilena" class="flag-chile">
+
+<!-- Contenedor de los banners -->
+<section id="contact-banners" class="section">
+    <div class="social-banners">
+    <a href="https://www.facebook.com/share/16kZ6iMfQK/?mibextid=wwXIfr" target="_blank" class="social-banner facebook">
+      <i class="fab fa-facebook-f"></i>
+      <span>Facebook</span>
+    </a>
+    <a href="https://www.linkedin.com/company/ingeadm/" target="_blank" class="social-banner linkedin">
+      <i class="fab fa-linkedin-in"></i>
+      <span>LinkedIn</span>
+    </a>
+    <a href="https://x.com/mcingeadm?s=21&t=H4TxV-QOc6WdC9UdZrG13w" target="_blank" class="social-banner twitter">
+      <i class="fab fa-twitter"></i>
+      <span>Twitter</span>
+    </a>
+  </div>
+</section>
+
 </footer>
+
+
+
+<!-- Pestaña flotante de la izquierda -->
+<div class="social-banner-left">
+    <a href="https://www.facebook.com/MCIngeAdm" target="_blank" class="social-banner facebook">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://www.linkedin.com/company/mcingeadm" target="_blank" class="social-banner linkedin">
+      <i class="fab fa-linkedin-in"></i>
+    </a>
+    <a href="https://twitter.com/MCIngeAdm" target="_blank" class="social-banner twitter">
+      <i class="fab fa-twitter"></i>
+    </a>
+</div>
+
 
 
 <div id="chatbot-icon">
@@ -517,6 +552,19 @@ document.getElementById("chatbot-user-input").addEventListener("keydown", functi
     });
   });
 
+  // JavaScript para manejar la visibilidad del banner flotante
+window.addEventListener('scroll', function() {
+    let banner = document.querySelector('.social-banner-left');
+    let scrollHeight = document.documentElement.scrollHeight;
+    let scrollPosition = window.innerHeight + window.scrollY;
+
+    // Cuando el scroll llega al final de la página, desliza el banner hacia la izquierda
+    if (scrollHeight - scrollPosition <= 0) {
+        banner.classList.add('hide');
+    } else {
+        banner.classList.remove('hide');
+    }
+});
 
 </script>
 
