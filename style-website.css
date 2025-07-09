@@ -520,4 +520,193 @@ footer {
 #whatsapp-button.move-up {
   bottom: 460px; /* se ajusta para no superponer el chatbot abierto */
 }
-  
+
+.testimonial {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  margin-bottom: 1rem;
+}
+
+.testimonial.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.testimonial.moving-up {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+/* Sección de banners de redes sociales */
+#contact-banners {
+    text-align: center;
+    margin: 40px 0;
+}
+
+#contact-banners h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    color: #2e7d32; /* El mismo verde que usas en h2 */
+}
+
+.social-banners {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2e7d32; /* Utilizando el verde de tu página */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.social-banner i {
+    margin-right: 8px;
+}
+
+.social-banner:hover {
+    transform: scale(1.1);
+    background-color: #1b5e20; /* Verde más oscuro */
+}
+
+.social-banner.facebook {
+    background-color: #3b5998;
+}
+
+.social-banner.linkedin {
+    background-color: #0077b5;
+}
+
+.social-banner.twitter {
+    background-color: #1da1f2;
+}
+
+.social-banner span {
+    font-size: 1rem; /* Ajuste para texto en los botones */
+}
+
+/* Banner flotante en el lado izquierdo */
+.social-banner-left {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 10px;
+    border-radius: 0 25px 25px 0;  /* Bordes redondeados en la derecha */
+    box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 999; /* Para que esté por encima del contenido */
+    transition: transform 0.5s ease;
+}
+
+.social-banner-left.hide {
+    transform: translateX(-100%); /* Desliza hacia la izquierda cuando se oculte */
+}
+
+.social-logo {
+    width: 40px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.social-logo:hover {
+    transform: scale(1.1);
+}
+
+/* Media queries para reducir el tamaño de los logos */
+@media (max-width: 768px) {
+    .social-logo {
+        width: 30px;
+    }
+}
+
+/* Footer */
+#footer {
+    background-color: #333;  /* Fondo oscuro para el footer */
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+}
+
+/* Sección de banners dentro del footer */
+#contact-banners-footer {
+    margin-top: 30px;
+}
+
+#contact-banners-footer h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    color: #2e7d32; /* El mismo verde que usas en h2 */
+}
+
+.social-banners {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2e7d32; /* Verde de la página */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.social-banner i {
+    margin-right: 8px;
+}
+
+.social-banner:hover {
+    transform: scale(1.1);
+    background-color: #1b5e20; /* Verde más oscuro */
+}
+
+.social-banner.facebook {
+    background-color: #3b5998;
+}
+
+.social-banner.linkedin {
+    background-color: #0077b5;
+}
+
+.social-banner.twitter {
+    background-color: #1da1f2;
+}
+
+.social-banner span {
+    font-size: 1rem;
+}
+
+/* Asegura que los logos de las redes sociales dentro del footer no sean muy grandes */
+@media (max-width: 768px) {
+    .social-banner {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+
+    .social-banner i {
+        font-size: 1rem;
+        margin-right: 5px;
+    }
+}
+
