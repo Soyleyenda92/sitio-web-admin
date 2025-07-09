@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MC IngeAdm - Administración de Edificios y Condominios</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style-website.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+
+<body>
+<!-- Modal -->
+<div id="modal-form" class="modal">
+    <div class="modal-content">
+        <span class="close-button" onclick="closeModal()">&times;</span>
+        <h2>Solicitar Asesoría</h2>
+        <form id="modal-formulario">
+            <input type="text" name="nombre" placeholder="Nombre completo" required><br>
+            <input type="text" name="edificio" placeholder="Nombre del edificio o condominio" required><br>
+            <input type="email" name="email" placeholder="Correo electrónico" required><br>
+            <textarea name="consulta" placeholder="Escribe tu consulta aquí" rows="5" required></textarea><br>
+            <button type="submit">Enviar mensaje</button>
+            <p class="form-mensaje" style="display:none; color: green;">¡Gracias! Tu solicitud ha sido enviada.</p>
+        </form>
+
+    </div>
+</div>
+
+<header>
+  <!-- Logo o nombre -->
+  <a href="#" class="home-button"><strong>MC IngeAdm</strong></a>
+
+  <!-- Botón hamburguesa (solo se muestra en móviles) -->
+  <button class="menu-toggle" onclick="toggleMenu()">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <!-- Menú de navegación -->
+  <nav id="main-nav">
+    <a href="#nosotros" onclick="closeMenu()">Nosotros</a>
+    <a href="#" class="service-button" onclick="openModal(); closeMenu()">Solicitar Asesoría</a>
+    <a href="#testimonios" onclick="closeMenu()">Testimonios</a>
+    <a href="#contacto" onclick="closeMenu()">Contacto</a>
+  </nav>
+</header>
+
+<section class="hero">
+    <h1>Administración Eficiente de Edificios y Condominios</h1>
+    <p>Gestión integral para comunidades seguras, limpias y organizadas</p>
+</section>
+
+<section id="nosotros" class="section">
+    <h2>¿Quiénes Somos?</h2>
+    <p>
+        En <strong>MC IngeAdm</strong> brindamos servicios especializados en la administración de edificios, conjuntos residenciales y condominios, conforme a la nueva Ley de Copropiedad Inmobiliaria N.º 21.442. Nuestro equipo profesional garantiza una gestión transparente, eficiente y enfocada en el bienestar y la organización de la comunidad, actuando siempre con responsabilidad y compromiso en el cuidado de los bienes e intereses de cada copropiedad.
+    </p>
+
+    <br>
+    <h2>Nuestra Historia</h2>
+    <h3>🌱</h3>
+    <p>
+        Todo comenzó a partir de una serie de experiencias insatisfactorias en la administración de comunidades: escasez de profesionalismo, falta de claridad en los procesos y una gestión financiera poco transparente. Como copropietario y miembro activo de comités de administración, viví de cerca los problemas que afectan el bienestar de los residentes y la convivencia en los edificios.
+    </p>
+    <p>
+        Esa realidad me motivó a actuar. Gracias a mi formación profesional y a los estudios especializados en gestión general y administración de edificios y condominios en la Pontificia Universidad Católica de Chile, decidí crear un servicio diferente: profesional, eficiente y verdaderamente comprometido con las personas.
+    </p>
+    <p>
+        Así nació este proyecto: con la misión de elevar el estándar en la administración de comunidades, ofreciendo una experiencia basada en la calidad, la transparencia y el respeto. No solo buscamos mejorar la vida diaria de los copropietarios y residentes, sino también dignificar el trabajo y el ambiente laboral de los colaboradores que forman parte de cada comunidad.
+    </p>
+    <p>
+        Este no es solo un servicio de administración. Es una forma de construir comunidades más felices, eficientes y humanas.
+    </p>
+</section>
+
+
+<section id="metodologia" class="section">
+  <h2>Nuestra Metodología de Trabajo</h2>
+  <p>Aplicamos los principios fundamentales de la administración moderna para garantizar una gestión eficiente y profesional:</p>
+
+  <div class="services">
+    <div class="card">
+      <i class="fa-solid fa-calendar-check fa-2x" style="color: #2e7d32;"></i>
+      <h3>Planificación</h3>
+      <p>Establecemos metas, presupuestos y cronogramas claros para anticipar necesidades y optimizar recursos comunitarios.</p>
+    </div>
+    <div class="card">
+      <i class="fa-solid fa-layer-group fa-2x" style="color: #2e7d32;"></i>
+      <h3>Organización</h3>
+      <p>Distribuimos funciones, coordinamos proveedores y estructuramos procesos para una administración ordenada y coherente.</p>
+    </div>
+    <div class="card">
+      <i class="fa-solid fa-compass fa-2x" style="color: #2e7d32;"></i>
+      <h3>Dirección</h3>
+      <p>Lideramos con claridad, motivamos a los equipos y facilitamos la participación activa de los copropietarios.</p>
+    </div>
+    <div class="card">
+      <i class="fa-solid fa-chart-line fa-2x" style="color: #2e7d32;"></i>
+      <h3>Control</h3>
+      <p>Supervisamos y evaluamos constantemente los procesos para garantizar calidad, cumplimiento y mejora continua.</p>
+    </div>
+  </div>
+</section>
+
+<section id="valores" class="section">
+  <h2>Nuestros Valores</h2>
+  <div class="valores-container">
+    <div class="valor">
+      <i class="fa-solid fa-handshake-angle fa-2x" style="color: #2e7d32;"></i>
+      <h3>Compromiso</h3>
+      <p>Nos involucramos activamente con cada comunidad, garantizando una gestión cercana, responsable y con vocación de servicio.</p>
+    </div>
+    <div class="valor">
+      <i class="fa-solid fa-book-open fa-2x" style="color: #2e7d32;"></i>
+      <h3>Transparencia</h3>
+      <p>Promovemos una administración clara, con acceso a la información contable y operativa en todo momento.</p>
+    </div>
+    <div class="valor">
+      <i class="fa-solid fa-users-gear fa-2x" style="color: #2e7d32;"></i>
+      <h3>Profesionalismo</h3>
+      <p>Contamos con un equipo capacitado, respetuoso de la normativa legal vigente y enfocado en soluciones eficientes.</p>
+    </div>
+  </div>
+</section>
+
+
+<section id="servicios" class="section">
+    <h2>Servicios Principales</h2>
+    <div class="services">
+        <div class="card">
+            <i class="fa-solid fa-building-circle-check fa-2x" style="color: #2e7d32;"></i>
+            <h3>Administración Integral</h3>
+            <p>Gestión contable, cobros de expensas, atención a residentes y manejo legal-administrativo.</p>
+        </div>
+        <div class="card">
+            <i class="fa-solid fa-screwdriver-wrench fa-2x" style="color: #2e7d32;"></i>
+            <h3>Mantenimiento Preventivo</h3>
+            <p>Supervisión de instalaciones comunes, ascensores, bombas de agua, áreas verdes y limpieza general.</p>
+        </div>
+        <div class="card">
+            <i class="fa-solid fa-file-invoice-dollar fa-2x" style="color: #2e7d32;"></i>
+            <h3>Transparencia Financiera</h3>
+            <p>Reportes mensuales, control presupuestal y acceso a cuentas claras y en línea para todos los propietarios.</p>
+        </div>
+        <div class="card">
+            <i class="fa-solid fa-comments fa-2x" style="color: #2e7d32;"></i>
+            <h3>Asambleas y Comunicación</h3>
+            <p>Convocatoria y dirección de reuniones, actas digitales y sistemas de comunicación con los copropietarios.</p>
+        </div>
+        <div class="card">
+            <i class="fa-solid fa-scale-balanced fa-2x" style="color: #2e7d32;"></i>
+            <h3>Asesoría Integral</h3>
+            <p>Orientación y consultoría en temas administrativos, legales y normativos como la Ley 21.442, para asegurar una gestión comunitaria conforme y eficiente.</p>
+        </div>
+
+        </div>
+    </div>
+</section>
+
+
+<section id="testimonios" class="section">
+  <h2>Testimonios</h2>
+  <div class="testimonials-container">
+    <div class="testimonial active">
+      “Comprometidos con la administración eficiente y transparente de tu comunidad.”
+    </div>
+    <div class="testimonial">
+      “Pronto podrás leer las experiencias de nuestros primeros clientes satisfechos.”
+    </div>
+    <div class="testimonial">
+      “Tu experiencia también puede ayudar a otros.”
+      Aquí aparecerá tu testimonio cuando decidas compartirlo. Nos encantaría saber cómo ha sido trabajar con nosotros: qué te gustó, qué podemos mejorar o simplemente tu opinión sincera. ¡Anímate a contarla!
+    </div>
+    <!-- Puedes agregar más testimonios aquí -->
+  </div>
+  <p>¿Ya trabajaste con nosotros? <a href="#contacto">Déjanos tu testimonio aquí</a>.</p>
+
+</section>
+
+<section id="contacto" class="contact">
+    <h2>Contáctanos</h2>
+    <p>¿Necesitas un administrador para tu comunidad? Escríbenos y con gusto te contactamos.</p>
+    <form id="contact-form">
+        <input type="text" name="nombre" placeholder="Nombre completo" required><br>
+        <input type="text" name="edificio" placeholder="Nombre del edificio o condominio" required><br>
+        <input type="email" name="email" placeholder="Correo electrónico" required><br>
+        <textarea name="consulta" placeholder="Escribe tu consulta aquí" rows="5" required></textarea><br>
+        <button type="submit">Enviar mensaje</button>
+        <p class="form-mensaje" style="display:none; color: green;">¡Gracias! Tu mensaje ha sido enviado.</p>
+    </form>
+
+</section>
+
+<footer>
+  <p>&copy; 2025 MC IngeAdm. Todos los derechos reservados.</p>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Flag_of_Chile.svg/32px-Flag_of_Chile.svg.png" alt="Bandera Chilena" class="flag-chile">
+
+<!-- Contenedor de los banners -->
+<section id="contact-banners" class="section">
+    <div class="social-banners">
+    <a href="https://www.facebook.com/share/16kZ6iMfQK/?mibextid=wwXIfr" target="_blank" class="social-banner facebook">
+      <i class="fab fa-facebook-f"></i>
+      <span>Facebook</span>
+    </a>
+    <a href="https://www.linkedin.com/company/ingeadm/" target="_blank" class="social-banner linkedin">
+      <i class="fab fa-linkedin-in"></i>
+      <span>LinkedIn</span>
+    </a>
+    <a href="https://x.com/mcingeadm?s=21&t=H4TxV-QOc6WdC9UdZrG13w" target="_blank" class="social-banner twitter">
+      <i class="fab fa-twitter"></i>
+      <span>Twitter</span>
+    </a>
+  </div>
+</section>
+
+</footer>
+
+
+
+<!-- Pestaña flotante de la izquierda -->
+<div class="social-banner-left">
+    <a href="https://www.facebook.com/MCIngeAdm" target="_blank" class="social-banner facebook">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://www.linkedin.com/company/mcingeadm" target="_blank" class="social-banner linkedin">
+      <i class="fab fa-linkedin-in"></i>
+    </a>
+    <a href="https://twitter.com/MCIngeAdm" target="_blank" class="social-banner twitter">
+      <i class="fab fa-twitter"></i>
+    </a>
+</div>
+
+
+
+<div id="chatbot-icon">
+  🤖💬
+</div>
+
+<div id="chatbot-window">
+  <div id="chatbot-header">Asistente MC IngeAdm</div>
+  <div id="chatbot-messages">
+    <div class="bot-msg">Hola 👋 mi nombre es AdmIA ¿En qué puedo ayudarte hoy?</div>
+  </div>
+  <div id="chatbot-input">
+    <input type="text" id="chatbot-user-input" placeholder="Escribe tu pregunta..." />
+    <button onclick="sendChatMessage()">➤</button>
+  </div>
+</div>
+
+<script>
+  // Modal + menú ya están bien
+  function openModal() {
+    document.getElementById("modal-form").style.display = "block";
+  }
+
+  function closeModal() {
+    document.getElementById("modal-form").style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    const modal = document.getElementById("modal-form");
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  }
+
+  function toggleMenu() {
+    const nav = document.getElementById("main-nav");
+    nav.classList.toggle("active");
+  }
+
+  function closeMenu() {
+    const nav = document.getElementById("main-nav");
+    nav.classList.remove("active");
+  }
+
+// Animación de testimonios mostrando 2 en cascada
+const testimonials = document.querySelectorAll('.testimonial');
+let current = 0;
+
+function showNextPair() {
+  // Quitamos todas las clases para resetear
+  testimonials.forEach(t => t.classList.remove('active', 'moving-up'));
+
+  const first = current;
+  const second = (current + 1) % testimonials.length;
+  const third = (current + 2) % testimonials.length;
+
+  // Mostrar el primero
+  testimonials[first].classList.add('active');
+
+  // Mostrar el segundo 1 segundo después
+  setTimeout(() => {
+    testimonials[second].classList.add('active');
+  }, 1000);
+
+  // El primero comienza a subir y desvanecerse en el segundo 4
+  setTimeout(() => {
+    testimonials[first].classList.remove('active');
+    testimonials[first].classList.add('moving-up');
+  }, 4000);
+
+  // Después de 1.5s de la animación subida, quitamos clase moving-up y el segundo desaparece
+  setTimeout(() => {
+    testimonials[first].classList.remove('moving-up');
+    testimonials[second].classList.remove('active');
+
+    // Finalmente mostramos el tercero para preparar siguiente ciclo
+    testimonials[third].classList.add('active');
+
+    current = (current + 1) % testimonials.length;
+  }, 5500);
+}
+
+showNextPair();
+setInterval(showNextPair, 5500);
+
+function enviarFormulario(formId) {
+  const form = document.getElementById(formId);
+  const mensaje = form.querySelector('.form-mensaje');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const data = new FormData(form);
+    const url = 'https://docs.google.com/forms/d/e/1FAIpQLScqyypRLa3c70rApm4tC-UdEYNrOvZk5qBnQ28wheAUoyvRzQ/formResponse';
+
+    const params = new URLSearchParams();
+    params.append('entry.1781500597', data.get('nombre'));
+    params.append('entry.391134068', data.get('edificio'));
+    params.append('entry.1640447617', data.get('email'));
+    params.append('entry.297979220', data.get('consulta'));
+
+    fetch(url, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: params
+    });
+
+    // Mostrar mensaje y limpiar formulario
+    mensaje.style.display = 'block';
+    form.reset();
+
+    // Cerrar modal si aplica
+    if (formId === 'modal-formulario') {
+      setTimeout(() => {
+        closeModal();
+        mensaje.style.display = 'none';
+      }, 3000);
+    } else {
+      setTimeout(() => mensaje.style.display = 'none', 3000);
+    }
+  });
+}
+
+enviarFormulario('modal-formulario');
+enviarFormulario('contact-form');
+
+//*abajo va el chatbot*//
+
+function toggleChatbot() {
+    const bot = document.getElementById("chatbot-window");
+    bot.style.display = (bot.style.display === "flex") ? "none" : "flex";
+  }
+
+  function sendChatMessage() {
+    const input = document.getElementById("chatbot-user-input");
+    const messages = document.getElementById("chatbot-messages");
+    const text = input.value.trim();
+    detectarDatosCliente(text);  // << Captura datos personales
+
+
+    if (!text) return;
+
+    // Mostrar mensaje del usuario
+    const userMsg = document.createElement("div");
+    userMsg.className = "user-msg";
+    userMsg.innerText = text;
+    messages.appendChild(userMsg);
+
+    input.value = "";
+
+    // Mostrar respuesta del bot
+    setTimeout(() => {
+      const botMsg = document.createElement("div");
+      botMsg.className = "bot-msg";
+
+      botMsg.innerText = generarRespuesta(text);
+      messages.appendChild(botMsg);
+      messages.scrollTop = messages.scrollHeight;
+    }, 600);
+  }
+
+  // Permitir enviar con Enter (y Shift+Enter para salto de línea si usas textarea en el futuro)
+document.getElementById("chatbot-user-input").addEventListener("keydown", function (event) {
+  if (event.key === "Enter" && !event.shiftKey) {
+    event.preventDefault();
+    sendChatMessage();
+  }
+  });
+
+  let datosCliente = {
+  nombre: null,
+  email: null,
+  edificio: null
+  };
+
+  function detectarDatosCliente(texto) {
+  const lower = texto.toLowerCase();
+
+    // Detectar nombre
+    const nombreMatch = texto.match(/(me llamo|mi nombre es)\s+([a-záéíóúñ\s]{3,})/i);
+    if (nombreMatch) {
+      datosCliente.nombre = nombreMatch[2].trim();
+    }
+
+    // Detectar correo
+    const emailMatch = texto.match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/i);
+    if (emailMatch) {
+      datosCliente.email = emailMatch[0];
+    }
+
+    // Detectar nombre de edificio
+    const edificioMatch = texto.match(/(edificio|condominio)\s+([a-z0-9áéíóúñ\s]{2,})/i);
+    if (edificioMatch) {
+      datosCliente.edificio = edificioMatch[2].trim();
+    }
+  }
+
+
+  function generarRespuesta(text) {
+    const t = text.toLowerCase();
+    const comentarioEmpatico = [
+      "Gracias por comentarlo.",
+      "Entiendo lo importante que es este tema.",
+      "Lamentamos la situación, y queremos ayudarte.",
+      "Gracias por tu confianza.",
+      "Valoramos que nos lo informes.",
+      "Vamos a tomar nota y ayudarte con gusto."
+    ];
+
+    function responderBase(mensajeTema) {
+      const empatia = comentarioEmpatico[Math.floor(Math.random() * comentarioEmpatico.length)];
+      const cierre = "\n\n📌 Para ayudarte mejor, por favor indícanos tu *nombre completo*, *edificio o condominio* y *correo electrónico*. Uno de nuestros asesores se pondrá en contacto contigo pronto.";
+      return `${empatia} ${mensajeTema}${cierre}`;
+    }
+
+    // Casos temáticos
+    if (t.includes("inundación") || t.includes("agua") || t.includes("filtración") || t.includes("cañería")) {
+      return responderBase("Los problemas de agua o filtraciones deben ser atendidos con urgencia por mantenimiento.");
+    }
+
+    if (t.includes("fuego") || t.includes("incendio") || t.includes("alarma")) {
+      return responderBase("Ante casos de incendio, es clave contar con protocolos activos y buena coordinación.");
+    }
+
+    if (t.includes("ascensor") || t.includes("elevador") || t.includes("parado")) {
+      return responderBase("Las fallas en ascensores deben ser revisadas por técnicos certificados lo antes posible.");
+    }
+
+    if (t.includes("electricidad") || t.includes("luz") || t.includes("corte")) {
+      return responderBase("Los cortes eléctricos pueden requerir revisión del sistema común o del proveedor externo.");
+    }
+
+    if (t.includes("basura") || t.includes("limpieza") || t.includes("residuos")) {
+      return responderBase("La limpieza y manejo de residuos deben seguir rutinas establecidas para áreas comunes.");
+    }
+
+    if (t.includes("portón") || t.includes("portero") || t.includes("conserje") || t.includes("acceso")) {
+      return responderBase("Los problemas de acceso deben tratarse de inmediato para garantizar la seguridad.");
+    }
+
+    if (t.includes("ruido") || t.includes("vecino") || t.includes("molestia") || t.includes("discusión")) {
+      return responderBase("La convivencia armónica es parte esencial de una comunidad organizada.");
+    }
+
+    if (t.includes("mascota") || t.includes("perro") || t.includes("animal")) {
+      return responderBase("Las mascotas deben respetar las normas internas del reglamento de copropiedad.");
+    }
+
+    if (t.includes("piscina") || t.includes("gimnasio") || t.includes("área común")) {
+      return responderBase("El uso de espacios comunes debe seguir las normas acordadas por el comité.");
+    }
+
+    if (t.includes("comité") || t.includes("reunión") || t.includes("asamblea")) {
+      return responderBase("Las reuniones de comité y asambleas deben regirse por plazos y quorum según la ley.");
+    }
+
+    if (t.includes("libro de actas") || t.includes("acta") || t.includes("registro")) {
+      return responderBase("La Ley 21.442 exige actas digitales o físicas firmadas para validar acuerdos.");
+    }
+
+    if (t.includes("cuentas") || t.includes("transparencia") || t.includes("gastos") || t.includes("presupuesto")) {
+      return responderBase("Toda comunidad debe recibir informes mensuales con respaldo de ingresos y egresos.");
+    }
+
+    if (t.includes("deuda") || t.includes("moroso") || t.includes("pago atrasado") || t.includes("cobro judicial")) {
+      return responderBase("Los cobros de gastos comunes tienen respaldo legal, pero deben tratarse con criterios justos.");
+    }
+
+    if (t.includes("reglamento") || t.includes("ley 21442") || t.includes("ley de copropiedad")) {
+      return responderBase("La Ley 21.442 regula la vida en comunidades. Estamos actualizados con sus últimas modificaciones.");
+    }
+
+    if (t.includes("cambio de administrador") || t.includes("despido") || t.includes("renuncia")) {
+      return responderBase("El cambio de administrador debe hacerse con respaldo de acta y entrega de documentación.");
+    }
+
+    if (t.includes("seguro") || t.includes("incendio") || t.includes("responsabilidad civil")) {
+      return responderBase("Todo condominio debe contar con seguros obligatorios según la ley.");
+    }
+
+    if (t.includes("servicio") || t.includes("qué hacen") || t.includes("administran")) {
+      return responderBase("Nos especializamos en la administración profesional de edificios, según estándares y ley vigente.");
+    }
+
+    if (t.includes("precio") || t.includes("cotización") || t.includes("valor") || t.includes("cobran")) {
+      return responderBase("El costo depende de tamaño, servicios requeridos y ubicación. Te podemos enviar una cotización sin compromiso.");
+    }
+
+    if (t.includes("ayuda") || t.includes("asesoría") || t.includes("consulta")) {
+      return responderBase("Estamos disponibles para ayudarte con asesoría administrativa, legal y operativa.");
+    }
+
+    if (t.includes("contacto") || t.includes("teléfono") || t.includes("correo")) {
+      return responderBase("Podemos enviarte más información si nos dejas tus datos.");
+    }
+
+    if (t.includes("urgente") || t.includes("emergencia")) {
+      return responderBase("En casos de emergencia, también puedes contactar al administrador o conserje directamente.");
+    }
+
+    return responderBase("Podemos ayudarte con este tema. Cuéntanos más si lo deseas.");
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const chatbotIcon = document.getElementById('chatbot-icon');
+    const chatbotWindow = document.getElementById('chatbot-window');
+    const whatsappButton = document.getElementById('whatsapp-button');
+
+    chatbotIcon.addEventListener('click', () => {
+      const isVisible = chatbotWindow.style.display === 'flex';
+
+      chatbotWindow.style.display = isVisible ? 'none' : 'flex';
+
+      if (!isVisible) {
+        whatsappButton.classList.add('move-up');
+      } else {
+        whatsappButton.classList.remove('move-up');
+      }
+    });
+  });
+
+  // JavaScript para manejar la visibilidad del banner flotante
+window.addEventListener('scroll', function() {
+    let banner = document.querySelector('.social-banner-left');
+    let scrollHeight = document.documentElement.scrollHeight;
+    let scrollPosition = window.innerHeight + window.scrollY;
+
+    // Cuando el scroll llega al final de la página, desliza el banner hacia la izquierda
+    if (scrollHeight - scrollPosition <= 0) {
+        banner.classList.add('hide');
+    } else {
+        banner.classList.remove('hide');
+    }
+});
+
+</script>
+
+<!-- Botón flotante WhatsApp -->
+<a href="https://wa.me/56951779204" target="_blank" rel="noopener" id="whatsapp-button" aria-label="Contactar por WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+</body>
+</html>
