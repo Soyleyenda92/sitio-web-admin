@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MC IngeAdm - Administración de Edificios y Condominios</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style-website.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Header común -->
+ <header>
+  <!-- Logo o nombre -->
+  <a href="index.html" class="home-button"><strong>MC IngeAdm</strong></a>
+
+  <!-- Botón hamburguesa (solo se muestra en móviles) -->
+  <button class="menu-toggle" onclick="toggleMenu()">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <!-- Menú de navegación -->
+    <nav id="main-nav">
+    <a href="index.html#nosotros" onclick="closeMenu()">Nosotros</a>
+    <a href="#" class="service-button" onclick="openModal(); closeMenu()">Solicitar Asesoría</a>
+    <a href="index.html#testimonios" onclick="closeMenu()">Testimonios</a>
+    <a href="index.html#contacto" onclick="closeMenu()">Contacto</a>
+    </nav>
+</header>
+
+  <!-- Contenido principal -->
+  <main class="politicas">
+    <section class="contenedor-politicas">
+      <h1>Políticas de Privacidad</h1>
+      <p>En MC IngeAdm, respetamos tu privacidad y nos comprometemos a proteger la información personal que compartas con nosotros. A continuación, detallamos nuestras políticas de recopilación, uso y protección de datos:</p>
+
+      <h2>1. Recopilación de Datos</h2>
+      <p>Podemos recopilar datos como nombre, correo electrónico, dirección y otros detalles cuando nos contactas, solicitas información o utilizas nuestros formularios.</p>
+
+      <h2>2. Uso de la Información</h2>
+      <p>Utilizamos tus datos únicamente para fines relacionados con nuestros servicios de administración, atención al cliente, y para responder tus consultas o solicitudes.</p>
+
+      <h2>3. Protección de la Información</h2>
+      <p>Implementamos medidas técnicas y organizativas para garantizar la seguridad de tu información. No compartimos tus datos con terceros sin tu consentimiento, salvo obligación legal.</p>
+
+      <h2>4. Derechos del Usuario</h2>
+      <p>Como usuario, tienes derecho a acceder, rectificar o eliminar tus datos personales. Puedes ejercer estos derechos escribiéndonos al correo indicado en la sección de contacto.</p>
+
+      <h2>5. Cookies</h2>
+      <p>Este sitio puede utilizar cookies para mejorar tu experiencia. Puedes configurar tu navegador para rechazarlas si así lo prefieres.</p>
+
+      <h2>6. Cambios a esta Política</h2>
+      <p>Nos reservamos el derecho de actualizar estas políticas. Las modificaciones estarán siempre disponibles en esta misma sección.</p>
+
+      <p>Última actualización: Julio 2025</p>
+    </section>
+  </main>
+
+  <!-- Footer reutilizable -->
+  <footer>
+    <p>&copy; 2025 MC IngeAdm. Todos los derechos reservados.</p>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Flag_of_Chile.svg/32px-Flag_of_Chile.svg.png" alt="Bandera Chilena" class="flag-chile">
+    
+    <p><a href="politicas.html" class="footer-link">Políticas de Privacidad</a></p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("main-nav");
+      nav.classList.toggle("active");
+    }
+
+    <script>
+  function toggleMenu() {
+    document.getElementById('main-nav').classList.toggle('active');
+  }
+  function closeMenu() {
+    document.getElementById('main-nav').classList.remove('active');
+  }
+  function openModal() {
+    document.getElementById("modal-form")?.style.display = "block";
+  }
+  function closeModal() {
+    document.getElementById("modal-form")?.style.display = "none";
+  }
+
+
+  </script>
+</body>
+</html>
