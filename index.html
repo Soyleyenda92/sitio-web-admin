@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -569,6 +570,24 @@ window.addEventListener('scroll', function() {
 });
 
 </script>
+
+<!-- Scroll suave estilo "Montes.cl" con Lenis -->
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.36/bundled/lenis.min.js"></script>
+<script>
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smooth: true
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+</script>
+
 
 <!-- Botón flotante WhatsApp -->
 <a href="https://wa.me/56951779204" target="_blank" rel="noopener" id="whatsapp-button" aria-label="Contactar por WhatsApp">
