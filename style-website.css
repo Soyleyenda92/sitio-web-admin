@@ -710,3 +710,30 @@ footer {
     }
 }
 
+.footer-link {
+  color: #ffffff;
+  text-decoration: underline;
+  font-size: 0.9rem;
+}
+.footer-link:hover {
+  color: #ccc;
+}
+
+.contenedor-politicas {
+  max-width: 800px;
+  margin: 100px auto 50px;
+  padding: 0 20px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.contenedor-politicas h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.contenedor-politicas h2 {
+  font-size: 1.4rem;
+  margin-top: 30px;
+}
+
