@@ -64,7 +64,7 @@ header nav a:active {
 .hero {
     position: relative;
     overflow: hidden;
-    background: url('IMAGES/FONDO.png') no-repeat center center/cover;
+    background: none; /* fondo será tomado por ::after */
     background-attachment: fixed; /* ¡Efecto parallax simple! */
     color: white;
     text-align: center;
@@ -760,3 +760,21 @@ footer {
 .card-nuevo {
   position: relative;
 }
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: inherit;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  animation: fadeInBg 2s ease-out forwards;
+  z-index: -1; /* detrás del ::before pero sobre el fondo gris */
+}
+
+@keyframes fadeInBg {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
