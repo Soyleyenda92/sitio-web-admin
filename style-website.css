@@ -78,6 +78,14 @@ header nav a:active {
   }
 }
 
+@media (max-width: 768px) {
+  .hero::after {
+    background-attachment: scroll !important;
+    animation: fadeInBgMobile 1s ease-out forwards;
+    animation-delay: 0s;
+  }
+}
+
 .hero::before {
     content: "";
     position: absolute;
