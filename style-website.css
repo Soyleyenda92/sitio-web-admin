@@ -72,7 +72,11 @@ header nav a:active {
     margin-top: 100px;
 }
 
-
+@media (max-width: 768px) {
+  .hero {
+    background-attachment: scroll !important;
+  }
+}
 
 .hero::before {
     content: "";
