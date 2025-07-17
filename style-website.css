@@ -764,13 +764,14 @@ footer {
 .hero::after {
   content: "";
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-image: inherit;
+  inset: 0;
+  background-image: url('IMAGES/FONDO.png');
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
   opacity: 0;
   animation: fadeInBg 2s ease-out forwards;
-  z-index: -1; /* detrás del ::before pero sobre el fondo gris */
+  z-index: -1;
 }
 
 @keyframes fadeInBg {
